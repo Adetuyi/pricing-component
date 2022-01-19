@@ -6,9 +6,17 @@ const priceDOM = document.querySelector('.price');
 const checker = document.querySelector('.checker');
 const discountDOM = document.querySelector('.discount');
 
+//Systems
+slider.addEventListener('drag', slide);
+slider.addEventListener('dragstart', () => slider.classList.add('dragging'));
+slider.addEventListener('dragend', () => slider.classList.remove('dragging'));
+
+//Mobile phones
 slider.addEventListener('touchmove', slide);
 slider.addEventListener('touchstart', () => slider.classList.add('dragging'));
 slider.addEventListener('touchend', () => slider.classList.remove('dragging'));
+
+//Checkbox
 checker.addEventListener('click', () => {
 	toggleActive();
 
@@ -50,11 +58,13 @@ function toggleActive() {
 }
 
 function slide(e) {
+	let cursor = e.x;
+	if (e.type === 'touchmove') cursor = e.changedTouches[0].clientX;
 	const bRect = bar.getBoundingClientRect();
 	const sRect = slider.getBoundingClientRect();
 
-	if (e.x !== 0) {
-		left = Math.floor(((e.x - bRect.left) / bRect.width) * 100);
+	if (cursor !== 0) {
+		left = Math.floor(((cursor - bRect.left) / bRect.width) * 100);
 
 		//Contain the left
 		if (left < 0) {
