@@ -59,7 +59,7 @@ function toggleActive() {
 
 function slide(e) {
 	let cursor = e.x;
-	if (e.type === 'touchmove') cursor = e.changedTouches[0].clientX;
+	if (e.type === 'touchmove') cursor = e.changedTouches[0].pageX;
 	const bRect = bar.getBoundingClientRect();
 	const sRect = slider.getBoundingClientRect();
 
