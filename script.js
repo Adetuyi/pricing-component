@@ -6,9 +6,9 @@ const priceDOM = document.querySelector('.price');
 const checker = document.querySelector('.checker');
 const discountDOM = document.querySelector('.discount');
 
-slider.addEventListener('drag', slide);
-slider.addEventListener('dragstart', () => slider.classList.add('dragging'));
-slider.addEventListener('dragend', () => slider.classList.remove('dragging'));
+slider.addEventListener('touchmove', slide);
+slider.addEventListener('touchstart', () => slider.classList.add('dragging'));
+slider.addEventListener('touchend', () => slider.classList.remove('dragging'));
 checker.addEventListener('click', () => {
 	toggleActive();
 
